@@ -16,4 +16,9 @@ object Certs {
     var clientCertChainFile = File("$root/client.crt")
     var trustCertCollectionFile = File("$root/ca.crt")
     var clientPrivateKeyFile = File("$root/client.pem")
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        println("file exists? ${certChainFile.exists()}")
+    }
 }

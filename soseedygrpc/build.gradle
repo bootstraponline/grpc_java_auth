@@ -5,6 +5,7 @@ apply plugin: 'com.google.protobuf'
 dependencies {
     // https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.grpc%22%20a%3A%22grpc-netty%22
     compile 'io.grpc:grpc-netty:1.12.0'
+    compile 'io.grpc:grpc-all:1.12.0'
 
     // https://mvnrepository.com/artifact/io.netty/netty-tcnative-boringssl-static
     compile 'io.netty:netty-tcnative-boringssl-static:2.0.8.Final'

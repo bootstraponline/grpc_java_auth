@@ -16,9 +16,9 @@
 
 package com.instructure.dataseeding.token_auth
 
-import com.instructure.soseedy.HealthCheck
-import com.instructure.soseedy.HealthCheckRequest
-import com.instructure.soseedy.SeedyGeneralGrpc
+import com.instructure.soseedy.EchoGrpc
+import com.instructure.soseedy.EchoRequest
+import com.instructure.soseedy.EchoResponse
 import io.grpc.ManagedChannel
 import io.grpc.StatusRuntimeException
 import io.grpc.netty.GrpcSslContexts
@@ -39,7 +39,7 @@ class TokenAuthClient
  * Construct client for accessing RouteGuide server using the existing channel.
  */
 internal constructor(private val channel: ManagedChannel) {
-    private val blockingStub: SeedyGeneralGrpc.SeedyGeneralBlockingStub
+    private val blockingStub: EchoGrpc.EchoBlockingStub
 
     /**
      * Construct client connecting to HelloWorld server at `host:port`.
@@ -54,7 +54,7 @@ internal constructor(private val channel: ManagedChannel) {
     }
 
     init {
-        blockingStub = SeedyGeneralGrpc.newBlockingStub(channel)
+        blockingStub = EchoGrpc.newBlockingStub(channel)
     }
 
     @Throws(InterruptedException::class)
@@ -67,15 +67,15 @@ internal constructor(private val channel: ManagedChannel) {
      */
     fun greet(name: String) {
         logger.info("Will try to greet $name ...")
-        val response: HealthCheck
+        val response: EchoResponse
         try {
-            response = blockingStub.getHealthCheck(HealthCheckRequest.getDefaultInstance())
+            response = blockingStub.get(EchoRequest.newBuilder().setText(name).build())
         } catch (e: StatusRuntimeException) {
             logger.log(Level.WARNING, "RPC failed: {0}", e.status)
             return
         }
 
-        logger.info("Greeting: " + response.healthy)
+        logger.info("Greeting: " + response.text)
     }
 
     companion object {
@@ -117,10 +117,7 @@ internal constructor(private val channel: ManagedChannel) {
 
             try {
                 /* Access a service running on the local machine on port 50051 */
-                var user = "world"
-                if (args.size > 0) {
-                    user = args[0] /* Use the arg as the name to greet if provided */
-                }
+                val user = "world"
                 client.greet(user)
             } finally {
                 client.shutdown()

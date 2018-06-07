@@ -16,16 +16,13 @@ package com.instructure.dataseeding.mutual_auth
  * limitations under the License.
  */
 
-import com.instructure.dataseeding.token_auth.ServerAuthInterceptor
-import com.instructure.dataseeding.seedyimpls.GeneralSeedyImpl
+import com.instructure.dataseeding.EchoGrpcImpl
 import io.grpc.Server
-import io.grpc.ServerInterceptors
 import io.grpc.netty.GrpcSslContexts
 import io.grpc.netty.NettyServerBuilder
 import io.netty.handler.ssl.ClientAuth
 import io.netty.handler.ssl.SslContextBuilder
 import io.netty.handler.ssl.SslProvider
-
 import java.io.File
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -54,7 +51,7 @@ class ServerTls(
     @Throws(IOException::class)
     private fun start() {
         server = NettyServerBuilder.forAddress(InetSocketAddress(host, port))
-                .addService(GeneralSeedyImpl())
+                .addService(EchoGrpcImpl())
                 .sslContext(sslContextBuilder.build())
                 .build()
                 .start()

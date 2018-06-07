@@ -16,7 +16,7 @@ package com.instructure.dataseeding.token_auth
  * limitations under the License.
  */
 
-import com.instructure.dataseeding.seedyimpls.GeneralSeedyImpl
+import com.instructure.dataseeding.EchoGrpcImpl
 import io.grpc.Server
 import io.grpc.ServerInterceptors
 import io.grpc.netty.GrpcSslContexts
@@ -53,7 +53,7 @@ class TokenAuthServer(
     @Throws(IOException::class)
     private fun start() {
         server = NettyServerBuilder.forAddress(InetSocketAddress(host, port))
-                .addService(GeneralSeedyImpl())
+                .addService(EchoGrpcImpl())
                 .sslContext(sslContextBuilder.build())
                 .build()
                 .start()
@@ -92,7 +92,7 @@ class TokenAuthServer(
             val host = "localhost"
             val port = 50051
             val server = NettyServerBuilder.forAddress(InetSocketAddress(host, port))
-                    .addService(ServerInterceptors.interceptForward(GeneralSeedyImpl(), ServerAuthInterceptor()))
+                    .addService(ServerInterceptors.interceptForward(EchoGrpcImpl(), ServerAuthInterceptor()))
                     .build()
             server.start()
             println("sever started . . . ...")
@@ -101,4 +101,3 @@ class TokenAuthServer(
         }
     }
 }
-
