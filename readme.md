@@ -17,3 +17,6 @@ generate certs using `./soseedygrpc/openssl/key.sh`
   - `plaintext/ClientPlain.kt`
   - `plaintext/ServerPlain.kt`
 
+## failed to bind
+
+- `killall -9 java`

@@ -33,18 +33,13 @@ class ServerTls(
         private val host: String,
         private val port: Int,
         private val certChainFilePath: String,
-        private val privateKeyFilePath: String,
-        private val clientCertChainFilePath: String?) {
+        private val privateKeyFilePath: String) {
 
     private var server: Server? = null
 
     private val sslContextBuilder: SslContextBuilder
         get() {
             val sslClientContextBuilder = SslContextBuilder.forServer(File(certChainFilePath), File(privateKeyFilePath))
-            if (clientCertChainFilePath != null) {
-                sslClientContextBuilder.trustManager(File(clientCertChainFilePath))
-                sslClientContextBuilder.clientAuth(ClientAuth.OPTIONAL)
-            }
             return GrpcSslContexts.configure(sslClientContextBuilder, SslProvider.OPENSSL)
         }
 
@@ -103,7 +98,7 @@ class ServerTls(
             println("Starting ServerTls")
 
             val server = ServerTls(
-                    host, port, certChainFilePath, privateKeyFilePath, null)
+                    host, port, certChainFilePath, privateKeyFilePath)
             server.start()
             server.blockUntilShutdown()
         }
