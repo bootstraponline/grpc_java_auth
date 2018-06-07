@@ -20,3 +20,8 @@ generate certs using `./soseedygrpc/openssl/key.sh`
 ## failed to bind
 
 - `killall -9 java`
+
+## connect refused
+
+Update `/etc/hosts` with `127.0.0.1	example.com`
+The cert generation script is tied to the example.com hostname.

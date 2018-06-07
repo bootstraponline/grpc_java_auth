@@ -30,28 +30,12 @@ import javax.net.ssl.SSLException
  */
 object ClientTls {
 
-
-    @Throws(SSLException::class)
-    private fun buildSslContext(trustCertCollectionFilePath: String?,
-                                clientCertChainFilePath: String?,
-                                clientPrivateKeyFilePath: String?): SslContext {
-        val builder = GrpcSslContexts.forClient()
-        if (trustCertCollectionFilePath != null) {
-            builder.trustManager(File(trustCertCollectionFilePath))
-        }
-        if (clientCertChainFilePath != null && clientPrivateKeyFilePath != null) {
-            builder.keyManager(File(clientCertChainFilePath), File(clientPrivateKeyFilePath))
-        }
-        return builder.build()
-    }
-
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val trustCertCollectionFilePath = Certs.trustCertCollectionFile.toString()
-        val sslContext = buildSslContext(trustCertCollectionFilePath, null, null)
+        val sslContext = Config.clientSslContext(Certs.trustCertCollectionFile)
 
-        val channel = NettyChannelBuilder.forAddress("localhost", 50051)
+        val channel = NettyChannelBuilder.forAddress("example.com", 50051)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
                 .build()

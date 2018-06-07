@@ -9,19 +9,17 @@ import io.netty.handler.ssl.SslProvider
 import java.net.InetSocketAddress
 
 object ServerTls {
-
-    private val sslContextBuilder: SslContextBuilder
-        get() {
-            val sslClientContextBuilder = SslContextBuilder.forServer(Certs.certChainFile, Certs.privateKeyFile)
-            return GrpcSslContexts.configure(sslClientContextBuilder, SslProvider.OPENSSL)
-        }
+    private val sslContext = GrpcSslContexts.configure(
+            SslContextBuilder.forServer(Certs.certChainFile, Certs.privateKeyFile),
+            SslProvider.OPENSSL)
+            .build()
 
     @JvmStatic
     fun main(args: Array<String>) {
 
         val nettyServer = NettyServerBuilder.forAddress(InetSocketAddress("localhost", 50051))
                 .addService(EchoGrpcImpl())
-                .sslContext(sslContextBuilder.build())
+                .sslContext(sslContext)
                 .useTransportSecurity(Certs.certChainFile, Certs.privateKeyFile)
                 .build()
 
