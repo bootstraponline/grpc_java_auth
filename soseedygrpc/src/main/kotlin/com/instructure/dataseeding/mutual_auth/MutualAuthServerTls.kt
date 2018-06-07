@@ -43,7 +43,7 @@ class MutualAuthServerTls(
             val sslClientContextBuilder = SslContextBuilder.forServer(File(certChainFilePath), File(privateKeyFilePath))
             if (clientCertChainFilePath != null) {
                 sslClientContextBuilder.trustManager(File(clientCertChainFilePath))
-                sslClientContextBuilder.clientAuth(ClientAuth.OPTIONAL)
+                sslClientContextBuilder.clientAuth(ClientAuth.REQUIRE)
             }
             return GrpcSslContexts.configure(sslClientContextBuilder, SslProvider.OPENSSL)
         }
