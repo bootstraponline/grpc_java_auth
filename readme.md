@@ -16,6 +16,9 @@ generate certs using `./soseedygrpc/openssl/key.sh`
   - `token_auth/TokenAuthClient.kt`
   - `plaintext/ClientPlain.kt`
   - `plaintext/ServerPlain.kt`
+- cd JavaAuthSwift; pod install
+- open JavaAuth.xcworkspace
+- run JavaAuthTests
 
 <img src="img/1.png" width="50%" />
 <img src="img/2.png" width="50%" />
