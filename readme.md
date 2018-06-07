@@ -2,3 +2,5 @@
 
 echo.proto is from [grpc-swift](https://github.com/grpc/grpc-swift/blob/master/Sources/Examples/Echo/echo.proto)
 
+generate certs using `./soseedygrpc/openssl/key.sh`
+
