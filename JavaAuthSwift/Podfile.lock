@@ -1,0 +1,56 @@
+PODS:
+  - BoringSSL (10.0.3):
+    - BoringSSL/Implementation (= 10.0.3)
+    - BoringSSL/Interface (= 10.0.3)
+  - BoringSSL/Implementation (10.0.3):
+    - BoringSSL/Interface (= 10.0.3)
+  - BoringSSL/Interface (10.0.3)
+  - gRPC-Core (1.11.0):
+    - gRPC-Core/Implementation (= 1.11.0)
+    - gRPC-Core/Interface (= 1.11.0)
+  - gRPC-Core/Implementation (1.11.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core/Interface (= 1.11.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.11.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - SwiftGRPC (0.4.3):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core (~> 1.11.0)
+    - SwiftProtobuf (~> 1.0.3)
+  - SwiftProtobuf (1.0.3)
+
+DEPENDENCIES:
+  - SwiftGRPC (from `https://github.com/n8armstrong/grpc-swift.git`, branch `tls-mutual-auth`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BoringSSL
+    - gRPC-Core
+    - nanopb
+    - SwiftProtobuf
+
+EXTERNAL SOURCES:
+  SwiftGRPC:
+    :branch: tls-mutual-auth
+    :git: https://github.com/n8armstrong/grpc-swift.git
+
+CHECKOUT OPTIONS:
+  SwiftGRPC:
+    :commit: 6fec2332108f1b156026d4292a2fd63b9600f95c
+    :git: https://github.com/n8armstrong/grpc-swift.git
+
+SPEC CHECKSUMS:
+  BoringSSL: c46efb47593135382bc0934196f16d2f726f5f36
+  gRPC-Core: 164639cd8ae18ca8b65477fafb2efbaecf4f181a
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SwiftGRPC: e582ede5791867075513a3757faa41be215b7e5a
+  SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
+
+PODFILE CHECKSUM: 899051c8aedb28e18c303a0e305097cefa110053
+
+COCOAPODS: 1.5.2
