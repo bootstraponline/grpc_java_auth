@@ -17,6 +17,10 @@ generate certs using `./soseedygrpc/openssl/key.sh`
   - `plaintext/ClientPlain.kt`
   - `plaintext/ServerPlain.kt`
 
+![](img/1.png)
+![](img/2.png)
+![](img/3.png)
+
 ## failed to bind
 
 - `killall -9 java`

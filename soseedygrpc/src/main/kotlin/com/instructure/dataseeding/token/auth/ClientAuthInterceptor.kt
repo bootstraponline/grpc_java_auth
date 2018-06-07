@@ -1,4 +1,4 @@
-package com.instructure.dataseeding.token_auth
+package com.instructure.dataseeding.token.auth
 
 import io.grpc.*
 import io.grpc.ForwardingClientCall.SimpleForwardingClientCall

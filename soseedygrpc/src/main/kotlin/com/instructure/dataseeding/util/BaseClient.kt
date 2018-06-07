@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.instructure.dataseeding
+package com.instructure.dataseeding.util
 
 import com.instructure.soseedy.EchoGrpc
 import com.instructure.soseedy.EchoRequest
@@ -29,11 +29,11 @@ class BaseClient(var channel: ManagedChannel) {
     private val blockingStub: EchoGrpc.EchoBlockingStub = EchoGrpc.newBlockingStub(channel)
 
     @Throws(InterruptedException::class)
-    fun shutdown() {
+    private fun shutdown() {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS)
     }
 
-    fun greet(name: String) {
+    private fun greet(name: String) {
         logger.info("Will try to greet $name ...")
         val response: EchoResponse
         try {

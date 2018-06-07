@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.instructure.dataseeding.regular_tls
+package com.instructure.dataseeding.token.auth
 
-import Config
-import com.instructure.dataseeding.BaseClient
-import com.instructure.dataseeding.mutual_auth.Certs
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.BaseClient
+import com.instructure.dataseeding.util.Certs
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
 
-object MutualAuthClientTls {
+object TokenAuthClientTls {
 
     @Throws(Exception::class)
     @JvmStatic
@@ -35,6 +35,7 @@ object MutualAuthClientTls {
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
+                .intercept(ClientAuthInterceptor())
                 .build()
 
         BaseClient(channel).greetAndShutdown()

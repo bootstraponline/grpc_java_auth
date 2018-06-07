@@ -1,4 +1,4 @@
-package com.instructure.dataseeding
+package com.instructure.dataseeding.util
 
 /*
  * Copyright 2015 The gRPC Authors

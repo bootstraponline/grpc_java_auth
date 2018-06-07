@@ -1,13 +1,12 @@
-package com.instructure.dataseeding.mutual_auth
+package com.instructure.dataseeding.mutual.auth
 
-import Config
-import com.instructure.dataseeding.BaseServer
-import com.instructure.dataseeding.EchoGrpcImpl
-import com.instructure.dataseeding.token_auth.ServerAuthInterceptor
-import io.grpc.ServerInterceptors
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.BaseServer
+import com.instructure.dataseeding.util.EchoGrpcImpl
+import com.instructure.dataseeding.util.Certs
 import io.grpc.netty.NettyServerBuilder
 
-object TokenAuthServerTls {
+object MutualAuthServerTls {
     @JvmStatic
     fun main(args: Array<String>) {
         val sslContext = Config.serverSslContext(
@@ -16,7 +15,7 @@ object TokenAuthServerTls {
                 Certs.clientCertChainFile)
 
         val nettyServer = NettyServerBuilder.forAddress(Config.localhost)
-                .addService(ServerInterceptors.interceptForward(EchoGrpcImpl(), ServerAuthInterceptor()))
+                .addService(EchoGrpcImpl())
                 .sslContext(sslContext)
                 .build()
 

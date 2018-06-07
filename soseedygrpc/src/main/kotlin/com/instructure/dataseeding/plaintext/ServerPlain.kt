@@ -16,9 +16,9 @@ package com.instructure.dataseeding.plaintext
  * limitations under the License.
  */
 
-import Config
-import com.instructure.dataseeding.BaseServer
-import com.instructure.dataseeding.EchoGrpcImpl
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.BaseServer
+import com.instructure.dataseeding.util.EchoGrpcImpl
 import io.grpc.netty.NettyServerBuilder
 
 object ServerPlain {

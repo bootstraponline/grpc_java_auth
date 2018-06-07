@@ -1,4 +1,4 @@
-package com.instructure.dataseeding
+package com.instructure.dataseeding.util
 
 import com.instructure.soseedy.EchoGrpc
 import com.instructure.soseedy.EchoRequest

@@ -1,4 +1,4 @@
-package com.instructure.dataseeding.mutual_auth
+package com.instructure.dataseeding.util
 
 import java.io.File
 
@@ -10,15 +10,10 @@ object Certs {
     // client.pem = clientPrivateKeyFile for the Client (needed for mutual TLS only)
     // server.pem = privateKeyFile for the Server
 
-    private const val root = "./openssl" // TODO: make relative
+    private const val root = "./openssl"
     var certChainFile = File("$root/server.crt")
     var privateKeyFile = File("$root/server.pem")
     var clientCertChainFile = File("$root/client.crt")
     var trustCertCollectionFile = File("$root/ca.crt")
     var clientPrivateKeyFile = File("$root/client.pem")
-
-    @JvmStatic
-    fun main(args: Array<String>) {
-        println("file exists? ${certChainFile.exists()}")
-    }
 }

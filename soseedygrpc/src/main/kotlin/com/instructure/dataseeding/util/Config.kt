@@ -1,3 +1,5 @@
+package com.instructure.dataseeding.util
+
 import io.grpc.netty.GrpcSslContexts
 import io.netty.handler.ssl.ClientAuth
 import io.netty.handler.ssl.SslContext

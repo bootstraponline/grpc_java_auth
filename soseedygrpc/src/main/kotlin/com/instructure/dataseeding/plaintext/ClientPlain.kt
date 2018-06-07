@@ -16,8 +16,8 @@
 
 package com.instructure.dataseeding.plaintext
 
-import Config
-import com.instructure.dataseeding.BaseClient
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.BaseClient
 import io.grpc.netty.NettyChannelBuilder
 
 object ClientPlain {

@@ -14,29 +14,27 @@
  * limitations under the License.
  */
 
-package com.instructure.dataseeding.regular_tls
+package com.instructure.dataseeding.regular.tls
 
-import Config
-import com.instructure.dataseeding.BaseClient
-import com.instructure.dataseeding.mutual_auth.Certs
-import com.instructure.dataseeding.token_auth.ClientAuthInterceptor
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.BaseClient
+import com.instructure.dataseeding.util.Certs
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
 
-object TokenAuthClientTls {
+/**
+ * A simple client that requests a greeting from the HelloWorldServer with TLS.
+ */
+object ClientTls {
 
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val sslContext = Config.clientSslContext(
-                Certs.trustCertCollectionFile,
-                Certs.clientCertChainFile,
-                Certs.clientPrivateKeyFile)
+        val sslContext = Config.clientSslContext(Certs.trustCertCollectionFile)
 
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
-                .intercept(ClientAuthInterceptor())
                 .build()
 
         BaseClient(channel).greetAndShutdown()

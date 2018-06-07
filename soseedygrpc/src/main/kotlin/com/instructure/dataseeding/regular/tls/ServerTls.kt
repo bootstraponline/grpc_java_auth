@@ -1,12 +1,10 @@
-package com.instructure.dataseeding.mutual_auth
+package com.instructure.dataseeding.regular.tls
 
-import Config
-import com.instructure.dataseeding.BaseServer
-import com.instructure.dataseeding.EchoGrpcImpl
-import io.grpc.netty.GrpcSslContexts
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.BaseServer
+import com.instructure.dataseeding.util.EchoGrpcImpl
+import com.instructure.dataseeding.util.Certs
 import io.grpc.netty.NettyServerBuilder
-import io.netty.handler.ssl.SslContextBuilder
-import io.netty.handler.ssl.SslProvider
 
 object ServerTls {
     @JvmStatic
