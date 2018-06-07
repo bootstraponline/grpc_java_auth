@@ -104,7 +104,7 @@ internal constructor(private val channel: ManagedChannel) {
                     "clientPrivateKeyFilePath are only needed if mutual auth is desired. And if you specify " +
                     "clientCertChainFilePath you must also specify clientPrivateKeyFilePath")
 
-            val host = "localhost"
+            val host = "example.com"
             val port = 50051
             val trustCertCollectionFilePath = Certs.trustCertCollectionFile.toString()
             val clientCertChainFilePath = Certs.clientCertChainFile.toString()
