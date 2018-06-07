@@ -17,9 +17,9 @@ generate certs using `./soseedygrpc/openssl/key.sh`
   - `plaintext/ClientPlain.kt`
   - `plaintext/ServerPlain.kt`
 
-![](img/1.png)
-![](img/2.png)
-![](img/3.png)
+<img src="img/1.png" width="50%" />
+<img src="img/2.png" width="50%" />
+<img src="img/3.png" width="50%" />
 
 ## failed to bind
 
