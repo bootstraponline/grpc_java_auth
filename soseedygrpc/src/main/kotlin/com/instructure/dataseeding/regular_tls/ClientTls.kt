@@ -16,14 +16,11 @@
 
 package com.instructure.dataseeding.regular_tls
 
+import Config
 import com.instructure.dataseeding.BaseClient
 import com.instructure.dataseeding.mutual_auth.Certs
-import io.grpc.netty.GrpcSslContexts
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
-import io.netty.handler.ssl.SslContext
-import java.io.File
-import javax.net.ssl.SSLException
 
 /**
  * A simple client that requests a greeting from the HelloWorldServer with TLS.
@@ -35,7 +32,7 @@ object ClientTls {
     fun main(args: Array<String>) {
         val sslContext = Config.clientSslContext(Certs.trustCertCollectionFile)
 
-        val channel = NettyChannelBuilder.forAddress("example.com", 50051)
+        val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
                 .build()

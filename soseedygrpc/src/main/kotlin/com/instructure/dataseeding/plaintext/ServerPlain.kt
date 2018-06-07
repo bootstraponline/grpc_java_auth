@@ -16,16 +16,16 @@ package com.instructure.dataseeding.plaintext
  * limitations under the License.
  */
 
+import Config
 import com.instructure.dataseeding.BaseServer
 import com.instructure.dataseeding.EchoGrpcImpl
 import io.grpc.netty.NettyServerBuilder
-import java.net.InetSocketAddress
 
 object ServerPlain {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val nettyServer = NettyServerBuilder.forAddress(InetSocketAddress("localhost", 50051))
+        val nettyServer = NettyServerBuilder.forAddress(Config.localhost)
                 .addService(EchoGrpcImpl())
                 .build()
 

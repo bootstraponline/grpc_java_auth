@@ -16,6 +16,7 @@
 
 package com.instructure.dataseeding.plaintext
 
+import Config
 import com.instructure.dataseeding.BaseClient
 import io.grpc.netty.NettyChannelBuilder
 
@@ -23,7 +24,7 @@ object ClientPlain {
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val channel = NettyChannelBuilder.forAddress("localhost", 50051)
+        val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .usePlaintext()
                 .build()
 
