@@ -7,213 +7,459 @@ package com.instructure.soseedy;
  * Protobuf type {@code echo.EchoResponse}
  */
 public  final class EchoResponse extends
-    com.google.protobuf.GeneratedMessageLite<
-        EchoResponse, EchoResponse.Builder> implements
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:echo.EchoResponse)
     EchoResponseOrBuilder {
+private static final long serialVersionUID = 0L;
+  // Use EchoResponse.newBuilder() to construct.
+  private EchoResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    super(builder);
+  }
   private EchoResponse() {
     text_ = "";
   }
+
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
+  private EchoResponse(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    int mutable_bitField0_ = 0;
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          default: {
+            if (!parseUnknownFieldProto3(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            text_ = s;
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return com.instructure.soseedy.EchoOuterClass.internal_static_echo_EchoResponse_descriptor;
+  }
+
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return com.instructure.soseedy.EchoOuterClass.internal_static_echo_EchoResponse_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            com.instructure.soseedy.EchoResponse.class, com.instructure.soseedy.EchoResponse.Builder.class);
+  }
+
   public static final int TEXT_FIELD_NUMBER = 1;
-  private java.lang.String text_;
+  private volatile java.lang.Object text_;
   /**
    * <pre>
    * The text of an echo response.
    * </pre>
    *
-   * <code>optional string text = 1;</code>
+   * <code>string text = 1;</code>
    */
   public java.lang.String getText() {
-    return text_;
+    java.lang.Object ref = text_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      text_ = s;
+      return s;
+    }
   }
   /**
    * <pre>
    * The text of an echo response.
    * </pre>
    *
-   * <code>optional string text = 1;</code>
+   * <code>string text = 1;</code>
    */
   public com.google.protobuf.ByteString
       getTextBytes() {
-    return com.google.protobuf.ByteString.copyFromUtf8(text_);
+    java.lang.Object ref = text_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      text_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
-  /**
-   * <pre>
-   * The text of an echo response.
-   * </pre>
-   *
-   * <code>optional string text = 1;</code>
-   */
-  private void setText(
-      java.lang.String value) {
-    if (value == null) {
-    throw new NullPointerException();
-  }
-  
-    text_ = value;
-  }
-  /**
-   * <pre>
-   * The text of an echo response.
-   * </pre>
-   *
-   * <code>optional string text = 1;</code>
-   */
-  private void clearText() {
-    
-    text_ = getDefaultInstance().getText();
-  }
-  /**
-   * <pre>
-   * The text of an echo response.
-   * </pre>
-   *
-   * <code>optional string text = 1;</code>
-   */
-  private void setTextBytes(
-      com.google.protobuf.ByteString value) {
-    if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-    
-    text_ = value.toStringUtf8();
+
+  private byte memoizedIsInitialized = -1;
+  public final boolean isInitialized() {
+    byte isInitialized = memoizedIsInitialized;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
+
+    memoizedIsInitialized = 1;
+    return true;
   }
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!text_.isEmpty()) {
-      output.writeString(1, getText());
+    if (!getTextBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, text_);
     }
+    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
-    int size = memoizedSerializedSize;
+    int size = memoizedSize;
     if (size != -1) return size;
 
     size = 0;
-    if (!text_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeStringSize(1, getText());
+    if (!getTextBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, text_);
     }
-    memoizedSerializedSize = size;
+    size += unknownFields.getSerializedSize();
+    memoizedSize = size;
     return size;
   }
 
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof com.instructure.soseedy.EchoResponse)) {
+      return super.equals(obj);
+    }
+    com.instructure.soseedy.EchoResponse other = (com.instructure.soseedy.EchoResponse) obj;
+
+    boolean result = true;
+    result = result && getText()
+        .equals(other.getText());
+    result = result && unknownFields.equals(other.unknownFields);
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TEXT_FIELD_NUMBER;
+    hash = (53 * hash) + getText().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
+  public static com.instructure.soseedy.EchoResponse parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static com.instructure.soseedy.EchoResponse parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
   public static com.instructure.soseedy.EchoResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, data);
+    return PARSER.parseFrom(data);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, data, extensionRegistry);
+    return PARSER.parseFrom(data, extensionRegistry);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, data);
+    return PARSER.parseFrom(data);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, data, extensionRegistry);
+    return PARSER.parseFrom(data, extensionRegistry);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static com.instructure.soseedy.EchoResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
   public static com.instructure.soseedy.EchoResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
   public static com.instructure.soseedy.EchoResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageLite.parseFrom(
-        DEFAULT_INSTANCE, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
   public static Builder newBuilder(com.instructure.soseedy.EchoResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
 
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
+  }
   /**
    * Protobuf type {@code echo.EchoResponse}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageLite.Builder<
-        com.instructure.soseedy.EchoResponse, Builder> implements
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:echo.EchoResponse)
       com.instructure.soseedy.EchoResponseOrBuilder {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.instructure.soseedy.EchoOuterClass.internal_static_echo_EchoResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.instructure.soseedy.EchoOuterClass.internal_static_echo_EchoResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.instructure.soseedy.EchoResponse.class, com.instructure.soseedy.EchoResponse.Builder.class);
+    }
+
     // Construct using com.instructure.soseedy.EchoResponse.newBuilder()
     private Builder() {
-      super(DEFAULT_INSTANCE);
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
+    public Builder clear() {
+      super.clear();
+      text_ = "";
 
+      return this;
+    }
+
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return com.instructure.soseedy.EchoOuterClass.internal_static_echo_EchoResponse_descriptor;
+    }
+
+    public com.instructure.soseedy.EchoResponse getDefaultInstanceForType() {
+      return com.instructure.soseedy.EchoResponse.getDefaultInstance();
+    }
+
+    public com.instructure.soseedy.EchoResponse build() {
+      com.instructure.soseedy.EchoResponse result = buildPartial();
+      if (!result.isInitialized()) {
+        throw newUninitializedMessageException(result);
+      }
+      return result;
+    }
+
+    public com.instructure.soseedy.EchoResponse buildPartial() {
+      com.instructure.soseedy.EchoResponse result = new com.instructure.soseedy.EchoResponse(this);
+      result.text_ = text_;
+      onBuilt();
+      return result;
+    }
+
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof com.instructure.soseedy.EchoResponse) {
+        return mergeFrom((com.instructure.soseedy.EchoResponse)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    public Builder mergeFrom(com.instructure.soseedy.EchoResponse other) {
+      if (other == com.instructure.soseedy.EchoResponse.getDefaultInstance()) return this;
+      if (!other.getText().isEmpty()) {
+        text_ = other.text_;
+        onChanged();
+      }
+      this.mergeUnknownFields(other.unknownFields);
+      onChanged();
+      return this;
+    }
+
+    public final boolean isInitialized() {
+      return true;
+    }
+
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      com.instructure.soseedy.EchoResponse parsedMessage = null;
+      try {
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (com.instructure.soseedy.EchoResponse) e.getUnfinishedMessage();
+        throw e.unwrapIOException();
+      } finally {
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
+      return this;
+    }
+
+    private java.lang.Object text_ = "";
     /**
      * <pre>
      * The text of an echo response.
      * </pre>
      *
-     * <code>optional string text = 1;</code>
+     * <code>string text = 1;</code>
      */
     public java.lang.String getText() {
-      return instance.getText();
+      java.lang.Object ref = text_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        text_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
      * <pre>
      * The text of an echo response.
      * </pre>
      *
-     * <code>optional string text = 1;</code>
+     * <code>string text = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTextBytes() {
-      return instance.getTextBytes();
+      java.lang.Object ref = text_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        text_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     /**
      * <pre>
      * The text of an echo response.
      * </pre>
      *
-     * <code>optional string text = 1;</code>
+     * <code>string text = 1;</code>
      */
     public Builder setText(
         java.lang.String value) {
-      copyOnWrite();
-      instance.setText(value);
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      text_ = value;
+      onChanged();
       return this;
     }
     /**
@@ -221,11 +467,12 @@ public  final class EchoResponse extends
      * The text of an echo response.
      * </pre>
      *
-     * <code>optional string text = 1;</code>
+     * <code>string text = 1;</code>
      */
     public Builder clearText() {
-      copyOnWrite();
-      instance.clearText();
+      
+      text_ = getDefaultInstance().getText();
+      onChanged();
       return this;
     }
     /**
@@ -233,111 +480,65 @@ public  final class EchoResponse extends
      * The text of an echo response.
      * </pre>
      *
-     * <code>optional string text = 1;</code>
+     * <code>string text = 1;</code>
      */
     public Builder setTextBytes(
         com.google.protobuf.ByteString value) {
-      copyOnWrite();
-      instance.setTextBytes(value);
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      text_ = value;
+      onChanged();
       return this;
     }
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.setUnknownFieldsProto3(unknownFields);
+    }
+
+    public final Builder mergeUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.mergeUnknownFields(unknownFields);
+    }
+
 
     // @@protoc_insertion_point(builder_scope:echo.EchoResponse)
   }
-  protected final Object dynamicMethod(
-      com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-      Object arg0, Object arg1) {
-    switch (method) {
-      case NEW_MUTABLE_INSTANCE: {
-        return new com.instructure.soseedy.EchoResponse();
-      }
-      case IS_INITIALIZED: {
-        return DEFAULT_INSTANCE;
-      }
-      case MAKE_IMMUTABLE: {
-        return null;
-      }
-      case NEW_BUILDER: {
-        return new Builder();
-      }
-      case VISIT: {
-        Visitor visitor = (Visitor) arg0;
-        com.instructure.soseedy.EchoResponse other = (com.instructure.soseedy.EchoResponse) arg1;
-        text_ = visitor.visitString(!text_.isEmpty(), text_,
-            !other.text_.isEmpty(), other.text_);
-        if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
-            .INSTANCE) {
-        }
-        return this;
-      }
-      case MERGE_FROM_STREAM: {
-        com.google.protobuf.CodedInputStream input =
-            (com.google.protobuf.CodedInputStream) arg0;
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-            (com.google.protobuf.ExtensionRegistryLite) arg1;
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!input.skipField(tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                String s = input.readStringRequireUtf8();
-
-                text_ = s;
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw new RuntimeException(e.setUnfinishedMessage(this));
-        } catch (java.io.IOException e) {
-          throw new RuntimeException(
-              new com.google.protobuf.InvalidProtocolBufferException(
-                  e.getMessage()).setUnfinishedMessage(this));
-        } finally {
-        }
-      }
-      case GET_DEFAULT_INSTANCE: {
-        return DEFAULT_INSTANCE;
-      }
-      case GET_PARSER: {
-        if (PARSER == null) {    synchronized (com.instructure.soseedy.EchoResponse.class) {
-            if (PARSER == null) {
-              PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-            }
-          }
-        }
-        return PARSER;
-      }
-    }
-    throw new UnsupportedOperationException();
-  }
-
 
   // @@protoc_insertion_point(class_scope:echo.EchoResponse)
   private static final com.instructure.soseedy.EchoResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new EchoResponse();
-    DEFAULT_INSTANCE.makeImmutable();
+    DEFAULT_INSTANCE = new com.instructure.soseedy.EchoResponse();
   }
 
   public static com.instructure.soseedy.EchoResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static volatile com.google.protobuf.Parser<EchoResponse> PARSER;
+  private static final com.google.protobuf.Parser<EchoResponse>
+      PARSER = new com.google.protobuf.AbstractParser<EchoResponse>() {
+    public EchoResponse parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new EchoResponse(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<EchoResponse> parser() {
-    return DEFAULT_INSTANCE.getParserForType();
+    return PARSER;
   }
+
+  @java.lang.Override
+  public com.google.protobuf.Parser<EchoResponse> getParserForType() {
+    return PARSER;
+  }
+
+  public com.instructure.soseedy.EchoResponse getDefaultInstanceForType() {
+    return DEFAULT_INSTANCE;
+  }
+
 }
 

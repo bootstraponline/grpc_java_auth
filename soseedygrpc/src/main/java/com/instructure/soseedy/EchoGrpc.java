@@ -1,24 +1,24 @@
 package com.instructure.soseedy;
 
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.6.1)",
+    value = "by gRPC proto compiler (version 1.12.0)",
     comments = "Source: echo.proto")
 public final class EchoGrpc {
 
@@ -28,53 +28,153 @@ public final class EchoGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getGetMethod()} instead. 
   public static final io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
-      com.instructure.soseedy.EchoResponse> METHOD_GET =
-      io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "echo.Echo", "Get"))
-          .setRequestMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoResponse.getDefaultInstance()))
-          .build();
+      com.instructure.soseedy.EchoResponse> METHOD_GET = getGetMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getGetMethod;
+
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
-      com.instructure.soseedy.EchoResponse> METHOD_EXPAND =
-      io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "echo.Echo", "Expand"))
-          .setRequestMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoResponse.getDefaultInstance()))
-          .build();
+  public static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getGetMethod() {
+    return getGetMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getGetMethodHelper() {
+    io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse> getGetMethod;
+    if ((getGetMethod = EchoGrpc.getGetMethod) == null) {
+      synchronized (EchoGrpc.class) {
+        if ((getGetMethod = EchoGrpc.getGetMethod) == null) {
+          EchoGrpc.getGetMethod = getGetMethod = 
+              io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "echo.Echo", "Get"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new EchoMethodDescriptorSupplier("Get"))
+                  .build();
+          }
+        }
+     }
+     return getGetMethod;
+  }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getExpandMethod()} instead. 
   public static final io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
-      com.instructure.soseedy.EchoResponse> METHOD_COLLECT =
-      io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "echo.Echo", "Collect"))
-          .setRequestMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoResponse.getDefaultInstance()))
-          .build();
+      com.instructure.soseedy.EchoResponse> METHOD_EXPAND = getExpandMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getExpandMethod;
+
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getExpandMethod() {
+    return getExpandMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getExpandMethodHelper() {
+    io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse> getExpandMethod;
+    if ((getExpandMethod = EchoGrpc.getExpandMethod) == null) {
+      synchronized (EchoGrpc.class) {
+        if ((getExpandMethod = EchoGrpc.getExpandMethod) == null) {
+          EchoGrpc.getExpandMethod = getExpandMethod = 
+              io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "echo.Echo", "Expand"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new EchoMethodDescriptorSupplier("Expand"))
+                  .build();
+          }
+        }
+     }
+     return getExpandMethod;
+  }
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getCollectMethod()} instead. 
   public static final io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
-      com.instructure.soseedy.EchoResponse> METHOD_UPDATE =
-      io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "echo.Echo", "Update"))
-          .setRequestMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.lite.ProtoLiteUtils.marshaller(
-              com.instructure.soseedy.EchoResponse.getDefaultInstance()))
-          .build();
+      com.instructure.soseedy.EchoResponse> METHOD_COLLECT = getCollectMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getCollectMethod;
+
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getCollectMethod() {
+    return getCollectMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getCollectMethodHelper() {
+    io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse> getCollectMethod;
+    if ((getCollectMethod = EchoGrpc.getCollectMethod) == null) {
+      synchronized (EchoGrpc.class) {
+        if ((getCollectMethod = EchoGrpc.getCollectMethod) == null) {
+          EchoGrpc.getCollectMethod = getCollectMethod = 
+              io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "echo.Echo", "Collect"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new EchoMethodDescriptorSupplier("Collect"))
+                  .build();
+          }
+        }
+     }
+     return getCollectMethod;
+  }
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getUpdateMethod()} instead. 
+  public static final io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> METHOD_UPDATE = getUpdateMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getUpdateMethod;
+
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getUpdateMethod() {
+    return getUpdateMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest,
+      com.instructure.soseedy.EchoResponse> getUpdateMethodHelper() {
+    io.grpc.MethodDescriptor<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse> getUpdateMethod;
+    if ((getUpdateMethod = EchoGrpc.getUpdateMethod) == null) {
+      synchronized (EchoGrpc.class) {
+        if ((getUpdateMethod = EchoGrpc.getUpdateMethod) == null) {
+          EchoGrpc.getUpdateMethod = getUpdateMethod = 
+              io.grpc.MethodDescriptor.<com.instructure.soseedy.EchoRequest, com.instructure.soseedy.EchoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "echo.Echo", "Update"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.instructure.soseedy.EchoResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new EchoMethodDescriptorSupplier("Update"))
+                  .build();
+          }
+        }
+     }
+     return getUpdateMethod;
+  }
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -110,7 +210,7 @@ public final class EchoGrpc {
      */
     public void get(com.instructure.soseedy.EchoRequest request,
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_GET, responseObserver);
+      asyncUnimplementedUnaryCall(getGetMethodHelper(), responseObserver);
     }
 
     /**
@@ -120,7 +220,7 @@ public final class EchoGrpc {
      */
     public void expand(com.instructure.soseedy.EchoRequest request,
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_EXPAND, responseObserver);
+      asyncUnimplementedUnaryCall(getExpandMethodHelper(), responseObserver);
     }
 
     /**
@@ -130,7 +230,7 @@ public final class EchoGrpc {
      */
     public io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoRequest> collect(
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
-      return asyncUnimplementedStreamingCall(METHOD_COLLECT, responseObserver);
+      return asyncUnimplementedStreamingCall(getCollectMethodHelper(), responseObserver);
     }
 
     /**
@@ -140,34 +240,34 @@ public final class EchoGrpc {
      */
     public io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoRequest> update(
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
-      return asyncUnimplementedStreamingCall(METHOD_UPDATE, responseObserver);
+      return asyncUnimplementedStreamingCall(getUpdateMethodHelper(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            METHOD_GET,
+            getGetMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.instructure.soseedy.EchoRequest,
                 com.instructure.soseedy.EchoResponse>(
                   this, METHODID_GET)))
           .addMethod(
-            METHOD_EXPAND,
+            getExpandMethodHelper(),
             asyncServerStreamingCall(
               new MethodHandlers<
                 com.instructure.soseedy.EchoRequest,
                 com.instructure.soseedy.EchoResponse>(
                   this, METHODID_EXPAND)))
           .addMethod(
-            METHOD_COLLECT,
+            getCollectMethodHelper(),
             asyncClientStreamingCall(
               new MethodHandlers<
                 com.instructure.soseedy.EchoRequest,
                 com.instructure.soseedy.EchoResponse>(
                   this, METHODID_COLLECT)))
           .addMethod(
-            METHOD_UPDATE,
+            getUpdateMethodHelper(),
             asyncBidiStreamingCall(
               new MethodHandlers<
                 com.instructure.soseedy.EchoRequest,
@@ -203,7 +303,7 @@ public final class EchoGrpc {
     public void get(com.instructure.soseedy.EchoRequest request,
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_GET, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetMethodHelper(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -214,7 +314,7 @@ public final class EchoGrpc {
     public void expand(com.instructure.soseedy.EchoRequest request,
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(METHOD_EXPAND, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getExpandMethodHelper(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -225,7 +325,7 @@ public final class EchoGrpc {
     public io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoRequest> collect(
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
       return asyncClientStreamingCall(
-          getChannel().newCall(METHOD_COLLECT, getCallOptions()), responseObserver);
+          getChannel().newCall(getCollectMethodHelper(), getCallOptions()), responseObserver);
     }
 
     /**
@@ -236,7 +336,7 @@ public final class EchoGrpc {
     public io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoRequest> update(
         io.grpc.stub.StreamObserver<com.instructure.soseedy.EchoResponse> responseObserver) {
       return asyncBidiStreamingCall(
-          getChannel().newCall(METHOD_UPDATE, getCallOptions()), responseObserver);
+          getChannel().newCall(getUpdateMethodHelper(), getCallOptions()), responseObserver);
     }
   }
 
@@ -265,7 +365,7 @@ public final class EchoGrpc {
      */
     public com.instructure.soseedy.EchoResponse get(com.instructure.soseedy.EchoRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_GET, getCallOptions(), request);
+          getChannel(), getGetMethodHelper(), getCallOptions(), request);
     }
 
     /**
@@ -276,7 +376,7 @@ public final class EchoGrpc {
     public java.util.Iterator<com.instructure.soseedy.EchoResponse> expand(
         com.instructure.soseedy.EchoRequest request) {
       return blockingServerStreamingCall(
-          getChannel(), METHOD_EXPAND, getCallOptions(), request);
+          getChannel(), getExpandMethodHelper(), getCallOptions(), request);
     }
   }
 
@@ -306,7 +406,7 @@ public final class EchoGrpc {
     public com.google.common.util.concurrent.ListenableFuture<com.instructure.soseedy.EchoResponse> get(
         com.instructure.soseedy.EchoRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_GET, getCallOptions()), request);
+          getChannel().newCall(getGetMethodHelper(), getCallOptions()), request);
     }
   }
 
@@ -362,6 +462,41 @@ public final class EchoGrpc {
     }
   }
 
+  private static abstract class EchoBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+    EchoBaseDescriptorSupplier() {}
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
+      return com.instructure.soseedy.EchoOuterClass.getDescriptor();
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+      return getFileDescriptor().findServiceByName("Echo");
+    }
+  }
+
+  private static final class EchoFileDescriptorSupplier
+      extends EchoBaseDescriptorSupplier {
+    EchoFileDescriptorSupplier() {}
+  }
+
+  private static final class EchoMethodDescriptorSupplier
+      extends EchoBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+    private final String methodName;
+
+    EchoMethodDescriptorSupplier(String methodName) {
+      this.methodName = methodName;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+      return getServiceDescriptor().findMethodByName(methodName);
+    }
+  }
+
   private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
 
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
@@ -371,10 +506,11 @@ public final class EchoGrpc {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .addMethod(METHOD_GET)
-              .addMethod(METHOD_EXPAND)
-              .addMethod(METHOD_COLLECT)
-              .addMethod(METHOD_UPDATE)
+              .setSchemaDescriptor(new EchoFileDescriptorSupplier())
+              .addMethod(getGetMethodHelper())
+              .addMethod(getExpandMethodHelper())
+              .addMethod(getCollectMethodHelper())
+              .addMethod(getUpdateMethodHelper())
               .build();
         }
       }

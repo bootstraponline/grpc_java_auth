@@ -2,6 +2,8 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'com.google.protobuf'
 
+// note: gRPC Java lite is incompatible with gRPC Java
+// https://github.com/google/protobuf/issues/4314
 dependencies {
     // https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.grpc%22%20a%3A%22grpc-netty%22
     compile 'io.grpc:grpc-netty:1.12.0'
@@ -67,7 +69,7 @@ protobuf {
     protoc {
         // Download from repositories
         // https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.google.protobuf%22%20a%3A%22protoc%22
-        artifact = 'com.google.protobuf:protoc:3.4.0'
+        artifact = 'com.google.protobuf:protoc:3.5.1'
     }
 
     generatedFilesBaseDir = "$projectDir/src"
@@ -77,13 +79,10 @@ protobuf {
         // Define a plugin with name 'grpc'
         grpc {
             // https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.grpc%22%20a%3A%22protoc-gen-grpc-java%22
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.6.1'
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.12.0'
         }
 
-        javalite {
-            // https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.google.protobuf%22%20a%3A%22protoc-gen-javalite%22
-            // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        java {
         }
     }
 
@@ -94,14 +93,12 @@ protobuf {
                 remove java
             }
             task.plugins {
-                javalite {
+                java {
                     outputSubDir = 'java/'
                 }
                 // Add grpc output without any option.  grpc must have been defined in the
                 // protobuf.plugins block.
                 grpc {
-                    // Options added to --grpc_out
-                    option 'lite'
                     outputSubDir = 'java/'
                 }
             }
@@ -112,8 +109,7 @@ protobuf {
 
 task customClean {
     doLast {
-        delete "${protobuf.generatedFilesBaseDir}/main/java/echo"
-        addPrivateData.execute()
+        delete "${protobuf.generatedFilesBaseDir}/main/java/com/instructure/soseedy/"
     }
 }
 

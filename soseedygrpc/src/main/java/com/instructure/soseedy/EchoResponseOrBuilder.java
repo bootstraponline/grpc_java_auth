@@ -5,14 +5,14 @@ package com.instructure.soseedy;
 
 public interface EchoResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:echo.EchoResponse)
-    com.google.protobuf.MessageLiteOrBuilder {
+    com.google.protobuf.MessageOrBuilder {
 
   /**
    * <pre>
    * The text of an echo response.
    * </pre>
    *
-   * <code>optional string text = 1;</code>
+   * <code>string text = 1;</code>
    */
   java.lang.String getText();
   /**
@@ -20,7 +20,7 @@ public interface EchoResponseOrBuilder extends
    * The text of an echo response.
    * </pre>
    *
-   * <code>optional string text = 1;</code>
+   * <code>string text = 1;</code>
    */
   com.google.protobuf.ByteString
       getTextBytes();

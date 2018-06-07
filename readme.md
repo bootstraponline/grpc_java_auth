@@ -14,4 +14,6 @@ generate certs using `./soseedygrpc/openssl/key.sh`
   - `regular_tls/ClientTls.kt`
   - `token_auth/TokenAuthServer.kt`
   - `token_auth/TokenAuthClient.kt`
+  - `plaintext/ClientPlain.kt`
+  - `plaintext/ServerPlain.kt`
 
