@@ -45,7 +45,7 @@ class BasicEchoTestCase: XCTestCase {
         let certificate = Certs.trustCertCollection
         let clientCertificate = Certs.clientCertChain
         let clientKey = Certs.clientPrivateKey
-        client = Echo_EchoServiceClient(address: address, certificates: certificate, clientCertificates: clientCertificate, clientKey: clientKey)
+        client = Echo_EchoServiceClient(address: address, certificates: certificate, clientCertificates: clientCertificate, clientKey: clientKey, arguments: [.sslTargetNameOverride("example.com")])
         client.host = "example.com"
         client.timeout = defaultTimeout
 
