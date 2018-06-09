@@ -32,3 +32,9 @@ generate certs using `./soseedygrpc/openssl/key.sh`
 
 Update `/etc/hosts` with `127.0.0.1	example.com`
 The cert generation script is tied to the example.com hostname.
+
+## errors
+
+Java client hostname wrong. Fix by updating `CLIENT_CN="localhost"` to `CLIENT_CN="example.com"
+
+> Caused by: javax.net.ssl.SSLHandshakeException: error:10000410:SSL routines:OPENSSL_internal:SSLV3_ALERT_HANDSHAKE_FAILURE
