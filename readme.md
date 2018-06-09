@@ -44,3 +44,7 @@ ca subject must be `"/CN=${SERVER_CN}"` and not ` "/C=US/ST=Foo/L=Bar/O=Baz/CN=X
 > SwiftGRPC.RPCError.callError(successful, status unavailable: Connect Failed
 
 Swift client hostname wrong. Fix by updating `CLIENT_CN="example.com"` to `CLIENT_CN="localhost"`
+
+The `CN` value must match on `ca` and `client`. The `server` may have a different `CN`.
+
+Use `soseedygrpc/openssl/cfssl.sh` to generate the keys.

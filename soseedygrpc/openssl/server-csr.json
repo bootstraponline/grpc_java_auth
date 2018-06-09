@@ -1,5 +1,5 @@
 {
-  "CN": "grpc_auth",
+  "CN": "grpc_auth_server",
   "hosts": [
       "example.com"
   ],

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# **DON'T USE** Replaced by cfssl.sh
+
 ./clean.sh
 
 # Certstrap is a tool from square for working with certs.

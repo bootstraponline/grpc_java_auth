@@ -14,13 +14,9 @@
 		B15AB41020C9CEA10079D280 /* echo.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AB40E20C9CEA10079D280 /* echo.grpc.swift */; };
 		B15AB41120C9CEA10079D280 /* echo.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AB40F20C9CEA10079D280 /* echo.pb.swift */; };
 		B15AB41520C9CFFD0079D280 /* EchoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AB41420C9CFFD0079D280 /* EchoProvider.swift */; };
-		B15AB42620C9D0950079D280 /* keys.sh in Resources */ = {isa = PBXBuildFile; fileRef = B15AB41B20C9D0950079D280 /* keys.sh */; };
-		B15AB42720C9D0950079D280 /* server.key in Resources */ = {isa = PBXBuildFile; fileRef = B15AB41C20C9D0950079D280 /* server.key */; };
-		B15AB42820C9D0950079D280 /* ca.key in Resources */ = {isa = PBXBuildFile; fileRef = B15AB41D20C9D0950079D280 /* ca.key */; };
 		B15AB42920C9D0950079D280 /* client.crt in Resources */ = {isa = PBXBuildFile; fileRef = B15AB41E20C9D0950079D280 /* client.crt */; };
 		B15AB42B20C9D0950079D280 /* client.csr in Resources */ = {isa = PBXBuildFile; fileRef = B15AB42020C9D0950079D280 /* client.csr */; };
 		B15AB42C20C9D0950079D280 /* server.csr in Resources */ = {isa = PBXBuildFile; fileRef = B15AB42120C9D0950079D280 /* server.csr */; };
-		B15AB42D20C9D0950079D280 /* client.key in Resources */ = {isa = PBXBuildFile; fileRef = B15AB42220C9D0950079D280 /* client.key */; };
 		B15AB42E20C9D0950079D280 /* server.pem in Resources */ = {isa = PBXBuildFile; fileRef = B15AB42320C9D0950079D280 /* server.pem */; };
 		B15AB42F20C9D0950079D280 /* client.pem in Resources */ = {isa = PBXBuildFile; fileRef = B15AB42420C9D0950079D280 /* client.pem */; };
 		B15AB43020C9D0950079D280 /* ca.crt in Resources */ = {isa = PBXBuildFile; fileRef = B15AB42520C9D0950079D280 /* ca.crt */; };
@@ -60,14 +56,10 @@
 		B15AB40F20C9CEA10079D280 /* echo.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = echo.pb.swift; path = JavaAuth/proto/echo.pb.swift; sourceTree = SOURCE_ROOT; };
 		B15AB41420C9CFFD0079D280 /* EchoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoProvider.swift; sourceTree = "<group>"; };
 		B15AB41820C9D05C0079D280 /* Certs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certs.swift; sourceTree = "<group>"; };
-		B15AB41B20C9D0950079D280 /* keys.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = keys.sh; path = ../../../soseedygrpc/openssl/keys.sh; sourceTree = "<group>"; };
-		B15AB41C20C9D0950079D280 /* server.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = server.key; path = ../../../soseedygrpc/openssl/server.key; sourceTree = "<group>"; };
-		B15AB41D20C9D0950079D280 /* ca.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ca.key; path = ../../../soseedygrpc/openssl/ca.key; sourceTree = "<group>"; };
 		B15AB41E20C9D0950079D280 /* client.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = client.crt; path = ../../../soseedygrpc/openssl/client.crt; sourceTree = "<group>"; };
 		B15AB41F20C9D0950079D280 /* server.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = server.crt; path = ../../../soseedygrpc/openssl/server.crt; sourceTree = "<group>"; };
 		B15AB42020C9D0950079D280 /* client.csr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = client.csr; path = ../../../soseedygrpc/openssl/client.csr; sourceTree = "<group>"; };
 		B15AB42120C9D0950079D280 /* server.csr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = server.csr; path = ../../../soseedygrpc/openssl/server.csr; sourceTree = "<group>"; };
-		B15AB42220C9D0950079D280 /* client.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = client.key; path = ../../../soseedygrpc/openssl/client.key; sourceTree = "<group>"; };
 		B15AB42320C9D0950079D280 /* server.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = server.pem; path = ../../../soseedygrpc/openssl/server.pem; sourceTree = "<group>"; };
 		B15AB42420C9D0950079D280 /* client.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = client.pem; path = ../../../soseedygrpc/openssl/client.pem; sourceTree = "<group>"; };
 		B15AB42520C9D0950079D280 /* ca.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ca.crt; path = ../../../soseedygrpc/openssl/ca.crt; sourceTree = "<group>"; };
@@ -172,15 +164,11 @@
 			isa = PBXGroup;
 			children = (
 				B15AB42520C9D0950079D280 /* ca.crt */,
-				B15AB41D20C9D0950079D280 /* ca.key */,
 				B15AB41E20C9D0950079D280 /* client.crt */,
 				B15AB42020C9D0950079D280 /* client.csr */,
-				B15AB42220C9D0950079D280 /* client.key */,
 				B15AB42420C9D0950079D280 /* client.pem */,
-				B15AB41B20C9D0950079D280 /* keys.sh */,
 				B15AB41F20C9D0950079D280 /* server.crt */,
 				B15AB42120C9D0950079D280 /* server.csr */,
-				B15AB41C20C9D0950079D280 /* server.key */,
 				B15AB42320C9D0950079D280 /* server.pem */,
 			);
 			path = openssl;
@@ -303,15 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15AB42E20C9D0950079D280 /* server.pem in Resources */,
-				B15AB42D20C9D0950079D280 /* client.key in Resources */,
 				B15AB42C20C9D0950079D280 /* server.csr in Resources */,
 				B15AB42920C9D0950079D280 /* client.crt in Resources */,
-				B15AB42720C9D0950079D280 /* server.key in Resources */,
-				B15AB42620C9D0950079D280 /* keys.sh in Resources */,
 				B19B483120C9DDC900E1C616 /* server.crt in Resources */,
 				B15AB42B20C9D0950079D280 /* client.csr in Resources */,
 				B15AB43020C9D0950079D280 /* ca.crt in Resources */,
-				B15AB42820C9D0950079D280 /* ca.key in Resources */,
 				B15AB42F20C9D0950079D280 /* client.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
