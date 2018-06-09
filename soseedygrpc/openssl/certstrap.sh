@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf *.crl *.key *.crt *.csr
+./clean.sh
 
 go get -u github.com/square/certstrap
 
