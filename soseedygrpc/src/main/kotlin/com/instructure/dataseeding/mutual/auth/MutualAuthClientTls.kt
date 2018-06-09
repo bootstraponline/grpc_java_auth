@@ -33,6 +33,7 @@ object MutualAuthClientTls : RunClient {
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
+                .overrideAuthority(Config.exampleDotCom.hostName)
                 .build()
 
         return BaseClient(channel).greetAndShutdown()

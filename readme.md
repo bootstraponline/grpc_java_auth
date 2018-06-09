@@ -35,10 +35,10 @@ The cert generation script is tied to the example.com hostname.
 
 ## errors
 
-Java client hostname wrong. Fix by updating `CLIENT_CN="localhost"` to `CLIENT_CN="example.com"`
-
 > Caused by: javax.net.ssl.SSLHandshakeException: error:10000410:SSL routines:OPENSSL_internal:SSLV3_ALERT_HANDSHAKE_FAILURE
 
-Swift client hostname wrong. Fix by updating `CLIENT_CN="example.com"` to `CLIENT_CN="localhost"`
+Java client hostname wrong. Fix by updating `CLIENT_CN="localhost"` to `CLIENT_CN="example.com"`
 
 > SwiftGRPC.RPCError.callError(successful, status unavailable: Connect Failed
+
+Swift client hostname wrong. Fix by updating `CLIENT_CN="example.com"` to `CLIENT_CN="localhost"`
