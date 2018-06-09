@@ -33,6 +33,7 @@ object TokenAuthClient : RunClient {
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
+                .overrideAuthority(Config.exampleDotCom.hostName)
                 .intercept(ClientAuthInterceptor())
                 .build()
 
