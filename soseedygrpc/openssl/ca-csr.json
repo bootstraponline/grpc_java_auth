@@ -1,8 +1,5 @@
 {
-  "CN": "example.com",
-  "hosts": [
-      "example.com"
-  ],
+  "CN": "grpc_auth",
   "key": {
       "algo": "rsa",
       "size": 2048
