@@ -4,17 +4,27 @@ rm -rf *.crl *.key *.crt *.csr
 
 go get -u github.com/square/certstrap
 
+SIZE=2048
+
 # CA
-certstrap --depot-path . init --passphrase '' --common-name ca
-openssl pkcs8 -topk8 -nocrypt -in ca.key -out ca.pem
+certstrap --depot-path . init --passphrase '' --common-name example.com --key-bits $SIZE
+mv ./example.com.key ./ca.key
+mv ./example.com.crt ./ca.crt
+mv ./example.com.crl ./ca.crl
 
 # Server
-certstrap --depot-path . request-cert --passphrase '' --common-name server --domain 'example.com'
+certstrap --depot-path . request-cert --passphrase '' --common-name example.com --domain 'example.com'  --key-bits $SIZE
+mv ./example.com.key server.key
+mv ./example.com.csr server.csr
+
 certstrap --depot-path . sign server --CA ca
 openssl pkcs8 -topk8 -nocrypt -in server.key -out server.pem
 
 # Client
-certstrap --depot-path . request-cert --passphrase '' --common-name client --domain 'example.com'
+certstrap --depot-path . request-cert --passphrase '' --common-name example.com --domain 'example.com'  --key-bits $SIZE
+mv ./example.com.key client.key
+mv ./example.com.csr client.csr
+
 certstrap --depot-path . sign client --CA ca
 openssl pkcs8 -topk8 -nocrypt -in client.key -out client.pem
 
