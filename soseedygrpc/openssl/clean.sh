@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf *.crl *.key *.crt *.csr
+rm -rf *.crl *.key *.crt *.csr *.pem
