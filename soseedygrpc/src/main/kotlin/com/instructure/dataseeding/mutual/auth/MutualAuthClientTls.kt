@@ -16,17 +16,15 @@
 
 package com.instructure.dataseeding.mutual.auth
 
-import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.BaseClient
 import com.instructure.dataseeding.util.Certs
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
 
-object MutualAuthClientTls {
-
-    @Throws(Exception::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
+object MutualAuthClientTls : RunClient {
+    override fun runClient(): String {
         val sslContext = Config.clientSslContext(
                 Certs.trustCertCollectionFile,
                 Certs.clientCertChainFile,
@@ -37,6 +35,12 @@ object MutualAuthClientTls {
                 .sslContext(sslContext)
                 .build()
 
-        BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel).greetAndShutdown()
+    }
+
+    @Throws(Exception::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        runClient()
     }
 }

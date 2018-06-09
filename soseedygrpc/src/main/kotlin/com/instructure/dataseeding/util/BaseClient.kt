@@ -33,24 +33,25 @@ class BaseClient(var channel: ManagedChannel) {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS)
     }
 
-    private fun greet(name: String) {
+    private fun greet(name: String): String {
         logger.info("Will try to greet $name ...")
         val response: EchoResponse
         try {
             val request = EchoRequest.newBuilder().setText(name).build()
             response = blockingStub.get(request)
         } catch (e: StatusRuntimeException) {
-            logger.log(Level.WARNING, "RPC failed: {0}", e.status)
-            return
+            logger.log(Level.WARNING, "RPC failed")
+            throw e
         }
 
         logger.info("Greeting: " + response.text)
+        return response.text
     }
 
-    fun greetAndShutdown() {
+    fun greetAndShutdown(): String {
         try {
             val user = "world"
-            this.greet(user)
+            return this.greet(user)
         } finally {
             this.shutdown()
         }

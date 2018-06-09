@@ -26,7 +26,7 @@ class BaseServer(
 
     @Throws(IOException::class)
     fun startAndBlockUntilShutdown() {
-        server.start()
+        this.start()
         logger.info("Server started, listening on ${server.port}")
         Runtime.getRuntime()
                 .addShutdownHook(
@@ -34,7 +34,7 @@ class BaseServer(
                             override fun run() {
                                 // Use stderr here since the logger may have been reset by its JVM shutdown hook.
                                 System.err.println("*** shutting down gRPC server since JVM is shutting down")
-                                this@BaseServer.stop()
+                                this@BaseServer.shutdown()
                                 System.err.println("*** server shut down")
                             }
                         })
@@ -42,7 +42,12 @@ class BaseServer(
         server.awaitTermination()
     }
 
-    private fun stop() {
+    fun start(): BaseServer {
+        server.start()
+        return this
+    }
+
+    fun shutdown() {
         server.shutdown()
     }
 

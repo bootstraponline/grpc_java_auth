@@ -1,15 +1,11 @@
 package com.instructure.dataseeding.token.auth
 
-import com.instructure.dataseeding.util.Config
-import com.instructure.dataseeding.util.BaseServer
-import com.instructure.dataseeding.util.EchoGrpcImpl
-import com.instructure.dataseeding.util.Certs
+import com.instructure.dataseeding.util.*
 import io.grpc.ServerInterceptors
 import io.grpc.netty.NettyServerBuilder
 
-object TokenAuthServerTls {
-    @JvmStatic
-    fun main(args: Array<String>) {
+object TokenAuthServer : CreateServer {
+    override fun createServer(): BaseServer {
         val sslContext = Config.serverSslContext(
                 Certs.certChainFile,
                 Certs.privateKeyFile,
@@ -20,7 +16,11 @@ object TokenAuthServerTls {
                 .sslContext(sslContext)
                 .build()
 
-        val server = BaseServer(nettyServer)
-        server.startAndBlockUntilShutdown()
+        return BaseServer(nettyServer)
+    }
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        createServer().startAndBlockUntilShutdown()
     }
 }

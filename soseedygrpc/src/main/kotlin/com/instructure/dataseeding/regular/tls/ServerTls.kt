@@ -1,14 +1,10 @@
 package com.instructure.dataseeding.regular.tls
 
-import com.instructure.dataseeding.util.Config
-import com.instructure.dataseeding.util.BaseServer
-import com.instructure.dataseeding.util.EchoGrpcImpl
-import com.instructure.dataseeding.util.Certs
+import com.instructure.dataseeding.util.*
 import io.grpc.netty.NettyServerBuilder
 
-object ServerTls {
-    @JvmStatic
-    fun main(args: Array<String>) {
+object ServerTls : CreateServer {
+    override fun createServer(): BaseServer {
         val sslContext = Config.serverSslContext(
                 Certs.certChainFile,
                 Certs.privateKeyFile)
@@ -18,7 +14,11 @@ object ServerTls {
                 .sslContext(sslContext)
                 .build()
 
-        val server = BaseServer(nettyServer)
-        server.startAndBlockUntilShutdown()
+        return BaseServer(nettyServer)
+    }
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        createServer().startAndBlockUntilShutdown()
     }
 }

@@ -12,6 +12,9 @@ dependencies {
     // https://mvnrepository.com/artifact/io.netty/netty-tcnative-boringssl-static
     compile 'io.netty:netty-tcnative-boringssl-static:2.0.8.Final'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    testCompile "com.google.truth:truth:0.40"
+    testCompile "junit:junit:4.12"
 }
 
 sourceCompatibility = "1.7"

@@ -16,17 +16,15 @@
 
 package com.instructure.dataseeding.token.auth
 
-import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.BaseClient
 import com.instructure.dataseeding.util.Certs
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
 
-object TokenAuthClientTls {
-
-    @Throws(Exception::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
+object TokenAuthClient : RunClient {
+    override fun runClient(): String {
         val sslContext = Config.clientSslContext(
                 Certs.trustCertCollectionFile,
                 Certs.clientCertChainFile,
@@ -38,6 +36,12 @@ object TokenAuthClientTls {
                 .intercept(ClientAuthInterceptor())
                 .build()
 
-        BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel).greetAndShutdown()
+    }
+
+    @Throws(Exception::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        runClient()
     }
 }

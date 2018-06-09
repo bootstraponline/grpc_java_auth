@@ -18,18 +18,21 @@ package com.instructure.dataseeding.plaintext
 
 import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.BaseServer
+import com.instructure.dataseeding.util.CreateServer
 import com.instructure.dataseeding.util.EchoGrpcImpl
 import io.grpc.netty.NettyServerBuilder
 
-object ServerPlain {
-
-    @JvmStatic
-    fun main(args: Array<String>) {
+object ServerPlain : CreateServer {
+    override fun createServer(): BaseServer {
         val nettyServer = NettyServerBuilder.forAddress(Config.localhost)
                 .addService(EchoGrpcImpl())
                 .build()
 
-        val server = BaseServer(nettyServer)
-        server.startAndBlockUntilShutdown()
+        return BaseServer(nettyServer)
+    }
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        createServer().startAndBlockUntilShutdown()
     }
 }

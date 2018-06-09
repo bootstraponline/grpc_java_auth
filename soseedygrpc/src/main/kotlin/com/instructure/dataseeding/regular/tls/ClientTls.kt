@@ -16,20 +16,18 @@
 
 package com.instructure.dataseeding.regular.tls
 
-import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.BaseClient
 import com.instructure.dataseeding.util.Certs
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
 
 /**
  * A simple client that requests a greeting from the HelloWorldServer with TLS.
  */
-object ClientTls {
-
-    @Throws(Exception::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
+object ClientTls : RunClient {
+    override fun runClient(): String {
         val sslContext = Config.clientSslContext(Certs.trustCertCollectionFile)
 
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
@@ -37,6 +35,12 @@ object ClientTls {
                 .sslContext(sslContext)
                 .build()
 
-        BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel).greetAndShutdown()
+    }
+
+    @Throws(Exception::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        runClient()
     }
 }

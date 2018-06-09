@@ -16,18 +16,23 @@
 
 package com.instructure.dataseeding.plaintext
 
-import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.BaseClient
+import com.instructure.dataseeding.util.Config
+import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NettyChannelBuilder
 
-object ClientPlain {
-    @Throws(Exception::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
+object ClientPlain : RunClient {
+    override fun runClient(): String {
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .usePlaintext()
                 .build()
 
-        BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel).greetAndShutdown()
+    }
+
+    @Throws(Exception::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        runClient()
     }
 }
