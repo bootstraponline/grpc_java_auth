@@ -39,6 +39,8 @@ The cert generation script is tied to the example.com hostname.
 
 Java client hostname wrong. Fix by updating `CLIENT_CN="localhost"` to `CLIENT_CN="example.com"`
 
+ca subject must be `"/CN=${SERVER_CN}"` and not ` "/C=US/ST=Foo/L=Bar/O=Baz/CN=Xyz"`
+
 > SwiftGRPC.RPCError.callError(successful, status unavailable: Connect Failed
 
 Swift client hostname wrong. Fix by updating `CLIENT_CN="example.com"` to `CLIENT_CN="localhost"`
