@@ -2,6 +2,9 @@
 
 ./clean.sh
 
+# Certstrap is a tool from square for working with certs.
+# Certstrap is in maintence mode and not actively developed.
+# https://github.com/square/certstrap
 go get -u github.com/square/certstrap
 
 # See mutual auth generation script:
