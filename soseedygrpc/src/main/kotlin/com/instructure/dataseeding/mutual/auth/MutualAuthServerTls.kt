@@ -6,9 +6,9 @@ import io.grpc.netty.NettyServerBuilder
 object MutualAuthServerTls : CreateServer {
     override fun createServer(): BaseServer {
         val sslContext = Config.serverSslContext(
-                Certs.certChainFile,
-                Certs.privateKeyFile,
-                Certs.clientCertChainFile)
+                Certs.serverCert,
+                Certs.serverPrivateKey,
+                Certs.caCert)
 
         val nettyServer = NettyServerBuilder.forAddress(Config.localhost)
                 .addService(EchoGrpcImpl())

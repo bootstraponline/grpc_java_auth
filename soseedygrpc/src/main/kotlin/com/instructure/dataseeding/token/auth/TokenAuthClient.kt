@@ -26,9 +26,9 @@ import io.grpc.netty.NettyChannelBuilder
 object TokenAuthClient : RunClient {
     override fun runClient(): String {
         val sslContext = Config.clientSslContext(
-                Certs.trustCertCollectionFile,
-                Certs.clientCertChainFile,
-                Certs.clientPrivateKeyFile)
+                Certs.caCert,
+                Certs.clientCert,
+                Certs.clientPrivateKey)
 
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .negotiationType(NegotiationType.TLS)

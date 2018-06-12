@@ -6,8 +6,8 @@ import io.grpc.netty.NettyServerBuilder
 object ServerTls : CreateServer {
     override fun createServer(): BaseServer {
         val sslContext = Config.serverSslContext(
-                Certs.certChainFile,
-                Certs.privateKeyFile)
+                Certs.serverCert,
+                Certs.serverPrivateKey)
 
         val nettyServer = NettyServerBuilder.forAddress(Config.localhost)
                 .addService(EchoGrpcImpl())

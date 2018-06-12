@@ -14,12 +14,12 @@ object Config {
     val localhost = InetSocketAddress("localhost", 50051)
     val exampleDotCom = InetSocketAddress("example.com", 50051)
 
-    fun serverSslContext(certChain: File?,
-                         privateKey: File?,
-                         clientCertChain: File? = null): SslContext {
-        val sslClientContextBuilder = SslContextBuilder.forServer(certChain, privateKey)
-        if (clientCertChain != null) {
-            sslClientContextBuilder.trustManager(clientCertChain)
+    fun serverSslContext(serverCert: File?,
+                         serverPrivateKey: File?,
+                         caCert: File? = null): SslContext {
+        val sslClientContextBuilder = SslContextBuilder.forServer(serverCert, serverPrivateKey)
+        if (caCert != null) {
+            sslClientContextBuilder.trustManager(caCert)
             sslClientContextBuilder.clientAuth(ClientAuth.REQUIRE)
         }
         return GrpcSslContexts.configure(sslClientContextBuilder, SslProvider.OPENSSL).build()
