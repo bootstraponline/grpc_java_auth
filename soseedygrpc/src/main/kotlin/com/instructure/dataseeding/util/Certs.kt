@@ -11,9 +11,9 @@ object Certs {
     // server.pem = privateKeyFile for the Server
 
     private const val root = "./openssl"
+    var caCert = File("$root/ca.crt")
     var serverCert = File("$root/server.crt")
     var serverPrivateKey = File("$root/server.pem")
     var clientCert = File("$root/client.crt")
-    var caCert = File("$root/ca.crt")
     var clientPrivateKey = File("$root/client.pem")
 }
