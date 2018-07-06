@@ -10,6 +10,8 @@ Mindmap overview:
 
 ---
 
+TODO: Document cloud endpoints deployment
+
 * Create cluster via cluster.json and create_cluster.jar
 * Generate SSL certificates
   * ./cfssl/cfssl.sh
