@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -euxo pipefail
 ./clean.sh
 
 # cfssl is a TLS toolkit from cloudflare.
@@ -21,6 +22,7 @@ go get -u github.com/cloudflare/cfssl/cmd/cfssljson
 # CA
 cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 mv ca.pem ca.crt
+openssl pkcs8 -topk8 -nocrypt -in ca-key.pem -out ca.pem
 
 # Server
 cfssl gencert -ca=ca.crt -ca-key=ca-key.pem -config=ca-config.json -profile=server server-csr.json | cfssljson -bare server

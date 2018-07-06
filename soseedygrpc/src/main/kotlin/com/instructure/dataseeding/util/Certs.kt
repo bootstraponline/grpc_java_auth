@@ -4,16 +4,33 @@ import java.io.File
 
 object Certs {
 
-    // ca.crt     = trustCertCollectionFile
-    // server.crt = certChainFile for the server
-    // client.crt = clientCertChainFile for the client (need for mutual TLS only)
-    // client.pem = clientPrivateKeyFile for the Client (needed for mutual TLS only)
-    // server.pem = privateKeyFile for the Server
+    private fun getResourceAsFile(name: String): File? {
+        val resource = this::class.java.getResourceAsStream("/$name") ?: return null
 
-    private const val root = "./openssl"
-    var caCert = File("$root/ca.crt")
-    var serverCert = File("$root/server.crt")
-    var serverPrivateKey = File("$root/server.pem")
-    var clientCert = File("$root/client.crt")
-    var clientPrivateKey = File("$root/client.pem")
+        val text = resource
+                .bufferedReader().use {
+                    it.readText()
+                }
+
+        val file = createTempFile()
+        file.deleteOnExit()
+        file.appendText(text)
+        return file
+    }
+
+    private fun get(name: String): File {
+        val resource = getResourceAsFile(name)
+        if (resource != null) return resource
+
+        val file = File("./src/main/resources/$name")
+        if (file.exists()) return file
+
+        throw RuntimeException("Unable to find $name as resource or file")
+    }
+
+    var caCert = get("ca.crt")
+    var serverCert = get("server.crt")
+    var serverPrivateKey = get("server.pem")
+    var clientCert = get("client.crt")
+    var clientPrivateKey = get("client.pem")
 }
