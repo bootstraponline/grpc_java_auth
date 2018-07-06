@@ -20,9 +20,10 @@ import com.instructure.dataseeding.util.BaseClient
 import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NettyChannelBuilder
+import java.net.InetSocketAddress
 
 object ClientPlain : RunClient {
-    override fun runClient(): String {
+    override fun runClient(address: InetSocketAddress): String {
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
                 .usePlaintext()
                 .build()

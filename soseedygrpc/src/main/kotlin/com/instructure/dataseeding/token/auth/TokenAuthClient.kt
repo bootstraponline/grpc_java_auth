@@ -22,9 +22,10 @@ import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
+import java.net.InetSocketAddress
 
 object TokenAuthClient : RunClient {
-    override fun runClient(): String {
+    override fun runClient(address: InetSocketAddress): String {
         val sslContext = Config.clientSslContext(
                 Certs.caCert,
                 Certs.clientCert,

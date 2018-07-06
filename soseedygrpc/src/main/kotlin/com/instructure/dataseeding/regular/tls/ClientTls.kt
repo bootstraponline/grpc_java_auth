@@ -22,12 +22,13 @@ import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
+import java.net.InetSocketAddress
 
 /**
  * A simple client that requests a greeting from the HelloWorldServer with TLS.
  */
 object ClientTls : RunClient {
-    override fun runClient(): String {
+    override fun runClient(address: InetSocketAddress): String {
         val sslContext = Config.clientSslContext(Certs.caCert)
 
         val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)

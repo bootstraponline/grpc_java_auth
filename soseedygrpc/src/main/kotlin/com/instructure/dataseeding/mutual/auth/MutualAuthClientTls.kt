@@ -22,15 +22,16 @@ import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.RunClient
 import io.grpc.netty.NegotiationType
 import io.grpc.netty.NettyChannelBuilder
+import java.net.InetSocketAddress
 
 object MutualAuthClientTls : RunClient {
-    override fun runClient(): String {
+    override fun runClient(address: InetSocketAddress): String {
         val sslContext = Config.clientSslContext(
                 Certs.caCert,
                 Certs.clientCert,
                 Certs.clientPrivateKey)
 
-        val channel = NettyChannelBuilder.forAddress(Config.exampleDotCom)
+        val channel = NettyChannelBuilder.forAddress(address)
                 .negotiationType(NegotiationType.TLS)
                 .sslContext(sslContext)
                 .overrideAuthority(Config.exampleDotCom.hostName)
