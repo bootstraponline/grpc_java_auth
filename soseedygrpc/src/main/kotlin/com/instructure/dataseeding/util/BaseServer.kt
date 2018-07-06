@@ -17,17 +17,21 @@ package com.instructure.dataseeding.util
  */
 
 import io.grpc.Server
+import org.slf4j.LoggerFactory
 import java.io.IOException
-import java.util.logging.Logger
 
 /** Server that manages startup/shutdown of a `Greeter` server with TLS enabled.  */
 class BaseServer(
-        private val server: Server) {
+        private val server: Server,
+        className: CreateServer
+) {
+
+    private val loggerName = className::class.java.simpleName
+    private val logger = LoggerFactory.getLogger(loggerName)
 
     @Throws(IOException::class)
     fun startAndBlockUntilShutdown() {
         this.start()
-        logger.info("Server started, listening on ${server.port}")
         Runtime.getRuntime()
                 .addShutdownHook(
                         object : Thread() {
@@ -44,15 +48,11 @@ class BaseServer(
 
     fun start(): BaseServer {
         server.start()
+        logger.info("Server started, listening on ${server.port}")
         return this
     }
 
     fun shutdown() {
         server.shutdown()
-    }
-
-    companion object {
-        private val className = BaseServer::class.java.simpleName
-        private val logger = Logger.getLogger(className)
     }
 }

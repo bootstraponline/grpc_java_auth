@@ -37,7 +37,7 @@ object TokenAuthClient : RunClient {
                 .intercept(ClientAuthInterceptor())
                 .build()
 
-        return BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel, this).greetAndShutdown()
     }
 
     @Throws(Exception::class)

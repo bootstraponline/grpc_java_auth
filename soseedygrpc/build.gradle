@@ -13,6 +13,9 @@ dependencies {
     compile 'io.netty:netty-tcnative-boringssl-static:2.0.8.Final'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    compile 'org.slf4j:slf4j-simple:1.8.0-beta2'
+
     testCompile "com.google.truth:truth:0.40"
     testCompile "junit:junit:4.12"
 }
@@ -50,7 +53,7 @@ compileTestKotlin {
 task("fatJar", type: Jar) {
     baseName = "${project.name}-all"
     manifest {
-        attributes 'Main-Class': 'com.instructure.dataseeding.OutOfProcessServer'
+        attributes 'Main-Class': 'com.instructure.dataseeding.Main'
     }
     from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar

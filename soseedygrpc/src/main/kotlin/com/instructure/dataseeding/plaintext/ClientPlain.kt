@@ -27,7 +27,7 @@ object ClientPlain : RunClient {
                 .usePlaintext()
                 .build()
 
-        return BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel, this).greetAndShutdown()
     }
 
     @Throws(Exception::class)

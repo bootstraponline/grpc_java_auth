@@ -36,7 +36,7 @@ object ClientTls : RunClient {
                 .overrideAuthority(Config.exampleDotCom.hostName)
                 .build()
 
-        return BaseClient(channel).greetAndShutdown()
+        return BaseClient(channel, this).greetAndShutdown()
     }
 
     @Throws(Exception::class)

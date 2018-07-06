@@ -16,7 +16,7 @@ object TokenAuthServer : CreateServer {
                 .sslContext(sslContext)
                 .build()
 
-        return BaseServer(nettyServer)
+        return BaseServer(nettyServer, this)
     }
 
     @JvmStatic
