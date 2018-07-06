@@ -34,8 +34,8 @@ kubectl get pod
 
 * Debug via logs as necessary
 
-kubectl logs esp-grpc-5bdcd74d47-nbr45 -c esp
-kubectl logs esp-grpc-5bdcd74d47-nbr45 -c soseedy
+kubectl logs esp-grpc-termination-6f9cff746-9npnl -c esp
+kubectl logs esp-grpc-termination-6f9cff746-9npnl -c termination
 
 * Optionally use bash shell to investigate issues
 
