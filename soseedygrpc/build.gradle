@@ -20,8 +20,6 @@ dependencies {
     testCompile "junit:junit:4.12"
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
 buildscript {
     ext.kotlin_version = '1.2.41'
 
