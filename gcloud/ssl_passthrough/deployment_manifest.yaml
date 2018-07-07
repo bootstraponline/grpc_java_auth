@@ -28,7 +28,7 @@ spec:
         image: gcr.io/endpoints-release/endpoints-runtime:1
         args: [
           "--http2_port=9000",
-          "--service=passthrough.endpoints.delta-essence-114723.cloud.goog",
+          "--service=echo.endpoints.delta-essence-114723.cloud.goog",
           "--rollout_strategy=managed",
           "--backend=grpc://127.0.0.1:50051"
         ]
