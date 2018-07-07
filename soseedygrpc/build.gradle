@@ -93,6 +93,24 @@ protobuf {
     generateProtoTasks {
         // all() = all proto tasks
         all().each { task ->
+
+            // If true, will generate a descriptor_set.desc file under
+            // $generatedFilesBaseDir/$sourceSet. Default is false.
+            // See --descriptor_set_out in protoc documentation about what it is.
+            task.generateDescriptorSet = true
+
+            // If true, the descriptor set will contain line number information
+            // and comments. Default is false.
+            task.descriptorSetOptions.includeSourceInfo = true
+
+            // Allows to override the default for the descriptor set location
+            // automation/dataseedingapi/main.dsc
+            task.descriptorSetOptions.path = "${projectDir}/${task.sourceSet.name}.dsc"
+
+            // If true, the descriptor set will contain all transitive imports and
+            // is therefore self-contained. Default is false.
+            task.descriptorSetOptions.includeImports = true
+
             task.builtins {
                 remove java
             }
