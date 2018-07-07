@@ -16,8 +16,8 @@ package com.instructure.dataseeding.plaintext
  * limitations under the License.
  */
 
-import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.BaseServer
+import com.instructure.dataseeding.util.Config
 import com.instructure.dataseeding.util.CreateServer
 import com.instructure.dataseeding.util.EchoGrpcImpl
 import io.grpc.netty.NettyServerBuilder
@@ -28,7 +28,7 @@ object ServerPlain : CreateServer {
                 .addService(EchoGrpcImpl())
                 .build()
 
-        return BaseServer(nettyServer)
+        return BaseServer(nettyServer, this)
     }
 
     @JvmStatic

@@ -21,11 +21,14 @@ import com.instructure.soseedy.EchoRequest
 import com.instructure.soseedy.EchoResponse
 import io.grpc.ManagedChannel
 import io.grpc.StatusRuntimeException
+import org.slf4j.LoggerFactory
 import java.util.concurrent.TimeUnit
-import java.util.logging.Level
-import java.util.logging.Logger
 
-class BaseClient(var channel: ManagedChannel) {
+class BaseClient(var channel: ManagedChannel, className: RunClient) {
+
+    private val loggerName = className::class.java.simpleName
+    private val logger = LoggerFactory.getLogger(loggerName)
+
     private val blockingStub: EchoGrpc.EchoBlockingStub = EchoGrpc.newBlockingStub(channel)
 
     @Throws(InterruptedException::class)
@@ -40,7 +43,7 @@ class BaseClient(var channel: ManagedChannel) {
             val request = EchoRequest.newBuilder().setText(name).build()
             response = blockingStub.get(request)
         } catch (e: StatusRuntimeException) {
-            logger.log(Level.WARNING, "RPC failed")
+            logger.warn("RPC failed")
             throw e
         }
 
@@ -55,9 +58,5 @@ class BaseClient(var channel: ManagedChannel) {
         } finally {
             this.shutdown()
         }
-    }
-
-    companion object {
-        private val logger = Logger.getLogger(BaseClient::class.java.name)
     }
 }

@@ -1,0 +1,16 @@
+# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
+type: google.api.Service
+config_version: 3
+
+# https://cloud.google.com/endpoints/docs/grpc/configure-endpoints
+# YOUR_API_NAME.endpoints.YOUR_PROJECT_ID.cloud.goog
+name: echo.endpoints.delta-essence-114723.cloud.goog
+
+title: Echo gRPC API
+apis:
+- name: echo.Echo
+
+usage:
+  rules:
+  - selector: echo.Echo.Get
+    allow_unregistered_calls: true
