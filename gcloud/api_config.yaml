@@ -14,3 +14,7 @@ usage:
   rules:
   - selector: echo.Echo.Get
     allow_unregistered_calls: true
+
+endpoints:
+- name: echo.endpoints.delta-essence-114723.cloud.goog
+  target: "35.225.126.157"

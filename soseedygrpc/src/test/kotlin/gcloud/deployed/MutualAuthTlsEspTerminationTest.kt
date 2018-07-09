@@ -15,7 +15,7 @@ class MutualAuthTlsEspTerminationTest {
     @Ignore
     fun testClientConnects() {
         val client = MutualAuthClientTls
-        val address = InetSocketAddress("35.224.8.72", 80)
+        val address = InetSocketAddress("echo.endpoints.delta-essence-114723.cloud.goog", 80)
 
         Truth.assertThat(client.runClient(address))
                 .isEqualTo("world")
