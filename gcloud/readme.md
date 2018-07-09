@@ -35,9 +35,19 @@ kubectl get pod
 
 * Debug via logs as necessary
 
-kubectl logs esp-grpc-termination-6f9cff746-9npnl -c esp
-kubectl logs esp-grpc-termination-6f9cff746-9npnl -c termination
+kubectl logs esp-grpc-passthrough-745978f8d7-cjrld -c esp
+kubectl logs esp-grpc-passthrough-745978f8d7-cjrld -c termination
 
 * Optionally use bash shell to investigate issues
 
 kubectl exec -it esp-grpc-5bdcd74d47-nbr45 -- /bin/bash
+
+* Update an existing deployment
+
+```
+kubectl edit -f deployment_manifest.yaml
+kubectl rollout status deployment/esp-grpc-passthrough
+kubectl set image deployment/esp-grpc-passthrough passthrough=gcr.io/delta-essence-114723/ssl_passthrough:latest
+```
+
+- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment

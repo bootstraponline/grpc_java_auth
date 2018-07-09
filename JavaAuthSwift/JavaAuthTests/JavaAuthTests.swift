@@ -19,42 +19,54 @@ import Foundation
 import XCTest
 
 enum Security {
-    case regular, none
+  case regular, none
 }
 
 class BasicEchoTestCase: XCTestCase {
-    var client: Echo_EchoServiceClient!
+  var client: Echo_EchoServiceClient!
 
-    var defaultTimeout: TimeInterval { return 1.0 }
-    var address: String { return "example.com:50051" }
+  var defaultTimeout: TimeInterval { return 1.0 }
+  // requires example.com to redirect to 127.0.0.1 in /etc/hosts
+  var address: String { return "example.com:50051" }
 
-    override func setUp() {
-        super.setUp()
-    }
+  // requires deployed server on Google cloud endpoints / kubernetes engine
+  var gcloudURI: String { return "echo.endpoints.delta-essence-114723.cloud.goog" }
+  var gcloudAddress: String { return "\(gcloudURI):80" }
+  let certificate = Certs.trustCertCollection
+  let clientCertificate = Certs.clientCertChain
+  let clientKey = Certs.clientPrivateKey
 
-    func testRegularSSL() {
-        let certificate = Certs.trustCertCollection
-        client = Echo_EchoServiceClient(address: address, certificates: certificate, arguments: [.sslTargetNameOverride("example.com")])
-        client.host = "example.com"
-        client.timeout = defaultTimeout
+  override func setUp() {
+    super.setUp()
+  }
 
-        XCTAssertEqual("hi", try! client.get(Echo_EchoRequest(text: "hi")).text)
-    }
+  func testRegularSSL() {
+    client = Echo_EchoServiceClient(address: address, certificates: certificate, arguments: [.sslTargetNameOverride("example.com")])
+    client.host = "example.com"
+    client.timeout = defaultTimeout
 
-    func testTLSMutualAuth() {
-        let certificate = Certs.trustCertCollection
-        let clientCertificate = Certs.clientCertChain
-        let clientKey = Certs.clientPrivateKey
-        client = Echo_EchoServiceClient(address: address, certificates: certificate, clientCertificates: clientCertificate, clientKey: clientKey, arguments: [.sslTargetNameOverride("example.com")])
-        client.host = "example.com"
-        client.timeout = defaultTimeout
+    XCTAssertEqual("hi", try! client.get(Echo_EchoRequest(text: "hi")).text)
+  }
 
-        XCTAssertEqual("hi", try! client.get(Echo_EchoRequest(text: "hi")).text)
-    }
+  func testTLSMutualAuth() {
+    client = Echo_EchoServiceClient(address: address, certificates: certificate, clientCertificates: clientCertificate, clientKey: clientKey, arguments: [.sslTargetNameOverride("example.com")])
+    client.host = "example.com"
+    client.timeout = defaultTimeout
 
-    override func tearDown() {
-        client = nil
+    XCTAssertEqual("hi", try! client.get(Echo_EchoRequest(text: "hi")).text)
+  }
 
-        super.tearDown()
-    }
+  func testTLSMutualAuthGcloud() {
+    client = Echo_EchoServiceClient(address: gcloudAddress, certificates: certificate, clientCertificates: clientCertificate, clientKey: clientKey, arguments: [.sslTargetNameOverride("example.com")])
+    client.host = gcloudURI
+    client.timeout = defaultTimeout
+
+    XCTAssertEqual("hi", try! client.get(Echo_EchoRequest(text: "hi")).text)
+  }
+
+  override func tearDown() {
+    client = nil
+
+    super.tearDown()
+  }
 }
